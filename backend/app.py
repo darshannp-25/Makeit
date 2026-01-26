@@ -124,7 +124,7 @@ def convert_file():
         print(f"Conversion successful, output: {output_filename}")
         return jsonify({
             "message": "Conversion successful",
-            "download_url": f"http://localhost:5000/download/{output_filename}",
+            "download_url": f"{os.environ.get('RENDER_EXTERNAL_URL', 'http://localhost:5000')}/download/{output_filename}",
             "filename": output_filename
         })
 
@@ -139,4 +139,4 @@ def download_file(filename):
     return send_file(os.path.join(app.config['UPLOAD_FOLDER'], filename), as_attachment=True)
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)), debug=False)
