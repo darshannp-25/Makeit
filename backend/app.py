@@ -122,9 +122,10 @@ def convert_file():
                 return jsonify({"error": "Invalid conversion type"}), 400
 
         print(f"Conversion successful, output: {output_filename}")
+        base_url = os.environ.get('RENDER_EXTERNAL_URL', 'http://localhost:5000')
         return jsonify({
             "message": "Conversion successful",
-            "download_url": f"{os.environ.get('RENDER_EXTERNAL_URL', 'http://localhost:5000')}/download/{output_filename}",
+            "download_url": f"{base_url}/download/{output_filename}",
             "filename": output_filename
         })
 
