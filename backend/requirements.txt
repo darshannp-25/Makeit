@@ -7,3 +7,5 @@ python-docx
 werkzeug
 docx2pdf
 gunicorn
+mammoth
+xhtml2pdf
