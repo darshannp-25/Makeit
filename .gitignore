@@ -54,3 +54,7 @@ yarn-error.log*
 # OS
 .DS_Store
 Thumbs.db
+backend/uploads/
+*.docx
+*.pdf
+backend/test_api.py

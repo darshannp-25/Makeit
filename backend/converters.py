@@ -122,10 +122,18 @@ def convert_word_to_pdf(word_path, pdf_path):
     print("Falling back to docx2pdf...")
     try:
         # docx2pdf uses Word on Windows, which handles fonts well if installed
+        if HAS_WIN32:
+            pythoncom.CoInitialize()
         docx_convert(word_path, pdf_path)
         return
     except Exception as e:
         print(f"docx2pdf failed: {e}")
+    finally:
+        if HAS_WIN32:
+            try:
+                pythoncom.CoUninitialize()
+            except:
+                pass
 
     # 3. Fallback to mammoth + xhtml2pdf (Pure Python, works on Linux/Render)
     print("Falling back to mammoth + xhtml2pdf...")
