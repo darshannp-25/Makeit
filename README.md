@@ -28,4 +28,5 @@
    - Value: Your Render Backend URL (from Step 1)
 6. Click **Deploy**.
 
-Your app is now live!
+
+Status: **Live** 🚀
